@@ -1,0 +1,19 @@
+.hat {
+	position: absolute;
+	top: 290px;
+	left: 340px;
+	z-index: 2;
+}
+
+.glasses {
+	position: absolute;
+	top: 455px;
+	left: 400px;
+	z-index: 1; 
+
+}
+
+.octo {
+	position: absolute;
+	margin: 350px;
+}
