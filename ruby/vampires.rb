@@ -1,7 +1,3 @@
-wolves_like_sunshine = true
-wolves_like_garlic = true
-vampires_like_sunshine = false
-vampires_like_garlic = false
 
 puts 'What is your name?'
 name = gets.chomp
@@ -18,3 +14,43 @@ garlic = gets.chomp
 puts 'Would you like to enroll in the company\'s health insurance?'
 insurance = gets.chomp
 
+
+#Determines if they lied on their age
+year = Time.now.year
+age_true = true
+if year.to_i - birth_year.to_i == age.to_i
+  age_true = true
+else 
+  age_true = false
+end
+
+#determines if they want insurance
+if insurance == 'yes'
+  insurance = true
+else
+  insurance = false
+end
+
+#determine garlic true or false
+if garlic == 'yes'
+  garlic = true
+else
+  garlic = false
+end
+
+#determine vamp
+if name = 'Drake Cula' || 'Tu Fang'
+  puts 'Definitely a vampire.'
+else  
+      if age_true && (garlic || insurance)
+        puts 'Probably not a vampire.'
+
+      elsif !age_true && (!garlic || !insurance)
+        puts 'Probably a vampire.'
+
+      elsif !age_true && !garlic && insurance
+        puts 'Almost certainly a vampire'
+      else
+        puts 'Results inconclusive'
+      end
+end
