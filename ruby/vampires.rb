@@ -38,19 +38,19 @@ else
   garlic = false
 end
 
+
 #determine vamp
-if name = 'Drake Cula' || 'Tu Fang'
-  puts 'Definitely a vampire.'
-else  
-      if age_true && (garlic || insurance)
-        puts 'Probably not a vampire.'
+if name == 'Drake Cula'|| name == 'Tu Fang'
+   puts 'Definitely a vampire.'
 
-      elsif !age_true && (!garlic || !insurance)
-        puts 'Probably a vampire.'
+elsif age_true && (garlic || insurance)
+  puts 'Probably not a vampire.'
 
-      elsif !age_true && !garlic && insurance
-        puts 'Almost certainly a vampire'
-      else
-        puts 'Results inconclusive'
-      end
+elsif !age_true && (!garlic || !insurance)
+  puts 'Probably a vampire.'
+
+elsif !age_true && !garlic && insurance
+  puts 'Almost certainly a vampire.'
+else
+  puts 'Results inconclusive.'
 end
