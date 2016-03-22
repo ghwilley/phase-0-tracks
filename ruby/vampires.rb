@@ -1,4 +1,5 @@
-
+puts 'How many employees would you like to process?'
+e
 puts 'What is your name?'
 name = gets.chomp
 
