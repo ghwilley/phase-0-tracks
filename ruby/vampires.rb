@@ -2,7 +2,8 @@ puts 'How many employees would you like to process?'
 employees = gets.chomp.to_i
 while employees > 0
 
-    puts 'What is your name?'
+
+puts 'What is your name?'
     name = gets.chomp
 
     puts 'How old are you?'
@@ -39,7 +40,7 @@ while employees > 0
       garlic = true
     else
       garlic = false
-    end
+    end 
 
     #test for allergies
     allergies = nil
@@ -51,21 +52,35 @@ while employees > 0
 
 
 
-    #determine vamp
-    if name == 'Drake Cula'|| name == 'Tu Fang'
-       puts 'Definitely a vampire.'
 
-    elsif age_true && (garlic || insurance)
-      puts 'Probably not a vampire.'
+    #test for allergies
+    allergy = nil
+    while allergy != 'done' && allergy != 'sunshine'
+      puts 'Name any allergies you have. Type \'done\' when you\'re finished.'
+      allergy = gets.chomp
+    end
 
-    elsif !age_true && (!garlic || !insurance)
-      puts 'Probably a vampire.'
-
-    elsif !age_true && !garlic && insurance
-      puts 'Almost certainly a vampire.'
+    if allergy == 'sunshine'
+      puts 'Probably a vampire'
     else
-      puts 'Results inconclusive.'
+      #determine vamp
+      if name == 'Drake Cula'|| name == 'Tu Fang'
+         puts 'Definitely a vampire.'
+
+      elsif age_true && (garlic || insurance)
+        puts 'Probably not a vampire.'
+
+      elsif !age_true && (!garlic || !insurance)
+        puts 'Probably a vampire.'
+
+      elsif !age_true && !garlic && insurance
+        puts 'Almost certainly a vampire.'
+      else
+        puts 'Results inconclusive.'
+      end
     end
 
     employees = employees - 1
 end
+
+puts 'Actually, never mind! What do these questions have to do with anything? Let\'s all be friends'
