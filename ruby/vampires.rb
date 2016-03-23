@@ -41,6 +41,15 @@ while employees > 0
       garlic = false
     end
 
+    #test for allergies
+    allergies = nil
+    
+    while allergies != 'done'
+      puts 'Do you have any allergies? type \'done\' when finished'
+      allergies = gets.chomp
+      if allergies = 'sunshine'
+
+
 
     #determine vamp
     if name == 'Drake Cula'|| name == 'Tu Fang'
