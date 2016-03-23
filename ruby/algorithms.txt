@@ -1,0 +1,18 @@
+Elevator!
+user says floor
+start at lowest floor
+if = user_floor
+  then press button
+ else floor = floor + 1
+end
+
+
+Brushing teeth!
+if btooth = 16
+end
+else brush btooth
+   then btooth = btooth + 1
+if ttooth = 16
+end
+else brush ttooth
+   then ttooth = ttooth + 1

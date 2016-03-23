@@ -1,0 +1,38 @@
+html {
+  font-family: Helvetica, Verdana;
+}
+
+header {
+  background-color: #3ef; 
+  padding: 2%;
+}
+
+header p {
+   font-style: oblique;
+}
+
+section {
+  padding: 2%;
+}
+
+
+.column-1 {
+  background-color: yellow;
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  height: 1200px;
+}
+
+.column-2 {
+  background-color: blue;
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  height: 1200px;
+}
+
+footer {
+  text-align: center;
+  padding: 2%;
+}
