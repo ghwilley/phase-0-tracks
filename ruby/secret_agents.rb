@@ -4,7 +4,7 @@ def encrypt(password)
 	i = 0
 	while i < index
 		password[i] = password[i].next!
-		i = i+1
+		i += 1
 	end
 	puts password
 end
@@ -16,15 +16,18 @@ encrypt("arg")
 
 def decrypt(password)
 	alpha = "abcdefghijklmnopqrstuvwxyz"
+	alpha_num = 0
+	letter = "a"
 	i = 0
 	index = password.length
 	while i < index
-		#whatever that letter is = 
-		password[i] = alpha[i]
-
-		i = i+1
+		letter = password[i]
+		alpha_num = alpha.index(letter) - 1
+		password[i] = alpha[alpha_num]
+		i += 1
 	end
 	puts password
+
 end
 
-decrypt("bsh")
+decrypt("gra")
