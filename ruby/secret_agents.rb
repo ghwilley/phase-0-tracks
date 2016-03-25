@@ -3,13 +3,17 @@ def encrypt(password)
 	index = password.length
 	i = 0
 	while i < index
-		password[i] = password[i].next!
+		if password[i] == "z"
+			password[i] = "a"
+		else
+			password[i] = password[i].next!
+		end
 		i += 1
 	end
 	puts password
 end
 
-encrypt("arg")
+encrypt("zed")
 
 # A decrypt method that reverses the process above.
 
@@ -30,4 +34,4 @@ def decrypt(password)
 
 end
 
-decrypt("gra")
+decrypt("afe")
