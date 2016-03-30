@@ -38,8 +38,25 @@ else
 	user_info[:fireplace] = false
 end
 
-#need to print in nice format
-p user_info.values
-# print back all info after user answered all questons
+# print users input
+puts "
+	Name: #{user_info[:name]}
+	Age: #{user_info[:age]}
+	Number of kids: #{user_info[:num_kids]}
+	Decor Theme: #{user_info[:decor]}
+	Color Preference: #{user_info[:colors]}
+	Number of Windows: #{user_info[:num_windows]}
+	Fireplace present: #{user_info[:fireplace]}
+	"
+# asks user to correct any wrong information
+puts "Is there anything you would like to change? Type \'none\' to skip"
+puts "type name, age, kids, decor, color, wind, or fire regarding what you want to change."
+#need user to say what bit they wanna change
+change = gets.chomp
+puts "what would you like to change that to?"
+new_val = gets.chomp
+user_info[change] = new_val
+#then whatver input shoulkd swp that symbl after
+
 
 # give a chance to update incorrect info - none to skip it
