@@ -42,6 +42,15 @@ puts 'What is your name?'
       garlic = false
     end 
 
+    #test for allergies
+    allergies = nil
+    
+    while allergies != 'done'
+      puts 'Do you have any allergies? type \'done\' when finished'
+      allergies = gets.chomp
+      if allergies = 'sunshine'
+
+
 
 
     #test for allergies

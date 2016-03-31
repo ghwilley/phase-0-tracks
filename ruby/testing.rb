@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 currentYear = Time.new.year
 results = nil
 
@@ -64,3 +65,13 @@ employeeAmt.times {|i|
 puts "Actually never mind! What do these questions have to do with anything? Let's all be friends."
 
 p "Actually, never mind! What do these questions have to do with anything? Let's all be friends."
+=======
+def method1
+  puts 1 + 1
+  def method2
+    puts 2+1
+  end
+end
+
+method1
+>>>>>>> 0c7a712b88e73bdee1929aa9db36019c3903c448
