@@ -3,10 +3,10 @@
 user_info = {
 	name: "", 
 	age: 0, 
-	num_kids: 0, 
+	kids: 0, 
 	decor: "", 
 	colors: "", 
-	num_windows: 0, 
+	windows: 0, 
 	fireplace: false
 	}
 
@@ -19,7 +19,7 @@ puts "How old are you?"
 user_info[:age] = gets.chomp
 
 puts "How many kids do you have?"
-user_info[:num_kids] = gets.chomp
+user_info[:kids] = gets.chomp
 
 puts "What theme do you want for the decor?"
 user_info[:decor] = gets.chomp
@@ -28,7 +28,7 @@ puts "What are some of your favorite colors?"
 user_info[:colors] = gets.chomp
 
 puts "How many windows in the room?"
-user_info[:num_windows] = gets.chomp
+user_info[:windows] = gets.chomp
 
 puts "Do you have a fireplace?(yes/no)"
 #conditional to assign boolean to :fireplace
@@ -40,13 +40,13 @@ end
 
 # print users input
 puts "
-	Name: #{user_info[:name]}
-	Age: #{user_info[:age]}
-	Kids: #{user_info[:num_kids]}
-	Decor: #{user_info[:decor]}
-	Colors: #{user_info[:colors]}
-	Windows: #{user_info[:num_windows]}
-	Fireplace: #{user_info[:fireplace]}
+	name: #{user_info[:name]}
+	age: #{user_info[:age]}
+	kids: #{user_info[:kids]}
+	decor: #{user_info[:decor]}
+	colors: #{user_info[:colors]}
+	windows: #{user_info[:windows]}
+	fireplace: #{user_info[:fireplace]}
 	"
 # asks user to correct any wrong information
 puts "Is there anything you would like to change? Type \'none\' to skip"
@@ -55,17 +55,18 @@ change = gets.chomp
 
 puts "what would you like to change that to?"
 new_val = gets.chomp
-user_info[change.downcase] == new_val
-#then whatver input shoulkd swp that symbl after
+#change user input to symbol and apply new value
+user_info[change.to_sym] = new_val
 
 
-# give a chance to update incorrect info - none to skip it
+
+# barf out the new stuff
 puts "
 	Name: #{user_info[:name]}
 	Age: #{user_info[:age]}
-	Kids: #{user_info[:num_kids]}
+	Kids: #{user_info[:kids]}
 	Decor: #{user_info[:decor]}
 	Colors: #{user_info[:colors]}
-	Windows: #{user_info[:num_windows]}
+	Windows: #{user_info[:windows]}
 	Fireplace: #{user_info[:fireplace]}
 	"
