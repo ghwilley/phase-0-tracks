@@ -10,12 +10,17 @@ class Morty
 def initialize
 	@hp = 30
 	@xp = 0
-	@lxl = 0
+	@lvl = 0.0
 	@attack = 15
 	@defense = 14
 	@age = 5
 	@status = ["green", "yellow", "red"]
 
+end
+
+def mantra(word)
+	mantra = word.upcase
+	3.times {|x| puts "#{word}"}
 end
 
 def damage_calc
@@ -35,7 +40,23 @@ def stat_calc
 end
 
 def attack_cal
+	dmg = rand(0 - 10)
+	@xp += dmg
+	@xp
 end
+
+def lvl_calc
+	if @xp >= 7
+		@lvl += 1.0
+	elsif @xp <= 7
+		@lvl += 0.3
+	else
+		@lvl += 0.1
+	end
+end
+			
+
+
 end
 
 #DRIVER CODE --------------
@@ -45,3 +66,11 @@ the_one_true_morty = Morty.new
 p the_one_true_morty.damage_calc
 #calculates status
 p the_one_true_morty.stat_calc
+
+#calculates damage given and xp revieved
+p the_one_true_morty.attack_cal
+
+#calculates current level
+p the_one_true_morty.lvl_calc
+
+the_one_true_morty.mantra("OUCH")
