@@ -1,5 +1,8 @@
 class Santa
 
+attr_reader :gender, :ethnicity
+attr_accessor :age, :reindeer_ranking
+
   def speak
     puts "Ho, ho, ho! Haaaaappy holidays!"
   end
@@ -16,28 +19,6 @@ class Santa
   	@ethnicity = ethnicity
     puts "Initializing Santa instance..."
   end
-
-
-
-  #GETTER METHODS ---------
-  def gender
-    @gender
-  end
-
-  def ethnicity
-    @ethnicity
-  end
-
-  def age
-    @age
-  end
-
-  def reindeer_ranking
-    @reindeer_ranking
-  end
-
-
-  #SETTER METHODS ------------
 
    def celebrate_birthday
      @age += 1
@@ -67,6 +48,7 @@ end
 # santa_gender.length.times do |i|
 # 	santas << Santa.new(santa_gender[i], santa_ethnic[i])
 # end
+
 st_nick.celebrate_birthday
 
 p st_nick.age
