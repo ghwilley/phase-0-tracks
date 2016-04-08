@@ -6,25 +6,16 @@
   # add each item to the hash
   # set default quantity
   # print the list to the console [can you use one of your other methods here?]
-  # p the hash
 # output: [what data type goes here, array or hash?]
 
-
-
 def shopping_list(user_input)
-  
   grocery_list = {}
- 
   list = user_input.split(" ")
-  
   list.each do |item|
     grocery_list[item] = 1
   end
-  
   p grocery_list
-
 end
-
 
 # Method to add an item to a list
 # input: item name and optional quantity
@@ -35,13 +26,10 @@ end
 # output:
   # output updated hash
   
-def add_item(grocery_list, new_item, new_quant)
+def add_item(grocery_list, new_item, new_quant=1)
     grocery_list[new_item] = new_quant
     p grocery_list
 end
-  
-
-
 
 # Method to remove an item from the list
 # input: whatever item to be removed
@@ -55,7 +43,6 @@ def remove_item(grocery_list, rem_item)
   p grocery_list
 end
 
-
 # Method to update the quantity of an item
 # input: item to updated, and new quantity
 # steps:
@@ -66,7 +53,6 @@ def new_quantity(grocery_list, item, new_quan)
   grocery_list[item] = new_quan
   p grocery_list
 end
-
 
 # Method to print a list and make it look pretty
 # input: existing hash
@@ -100,3 +86,20 @@ today_list = remove_item(today_list, "Lemonade")
 today_list = new_quantity(today_list, "Ice Cream", 1)
 
 today_list = print_list(today_list)
+
+#COMMENTS -------
+# The psuedocode was pretty helpful in this challenge. I liked the amount of detail it
+# went into, breaking apart each aspect of the method.
+
+# Hashes are great for keeping a value associated with something, so we stuck with hashes for
+# our list. Arrays were useful for breaking apart our initial string of items.
+
+# Methods return whatever we tell them to. That's the trick of choosing a proper output!
+
+# You can pass along string, int, float. Pretty much anything, even nothing if you set up
+# correctly
+
+# to pass between methods you need to return an argument and take an argument
+
+# methods taking arguments has been sharpened up quite a bit, I still have trouble
+# firing out block operators on the fly.
