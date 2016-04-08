@@ -4,18 +4,16 @@
 
 class Morty
 
-	attr_reader :attack, :defense, :hp, :age
+	attr_reader :attack, :defense, :hp
 	attr_accessor :xp, :lvl, :status
 
 def initialize
-	@hp = 30
+	@hp = 40
 	@xp = 0
 	@lvl = 0.0
 	@attack = 15
-	@defense = 14
-	@age = 5
+	@defense = 11
 	@status = ["green", "yellow", "red"]
-
 end
 
 def mantra(word)
@@ -62,15 +60,69 @@ end
 #DRIVER CODE --------------
 the_one_true_morty = Morty.new
 
-#Takes damage and calcs hp
-p the_one_true_morty.damage_calc
-#calculates status
-p the_one_true_morty.stat_calc
+# #Takes damage and calcs hp
+# p the_one_true_morty.damage_calc
+# #calculates status
+# p the_one_true_morty.stat_calc
 
-#calculates damage given and xp revieved
-p the_one_true_morty.attack_cal
+# #calculates damage given and xp revieved
+# p the_one_true_morty.attack_cal
 
-#calculates current level
-p the_one_true_morty.lvl_calc
+# #calculates current level
+# p the_one_true_morty.lvl_calc
 
-the_one_true_morty.mantra("OUCH")
+# the_one_true_morty.mantra("OUCH")
+morty_hold = []
+puts "Hello."
+puts "How many Mortys would you like to generate?"
+quantity = gets.chomp.to_i
+
+quantity.times do |x|
+	current_morty = []
+	puts "How much health for this morty?"
+	hp = gets.chomp
+	current_morty.push(hp)
+
+	puts "How much defense?"
+	defense = gets.chomp
+	current_morty.push(defense)
+
+	puts "How much attack?"
+	attack = gets.chomp
+	current_morty.push(attack)
+
+	#double check, then merge all as one array item
+	puts "Is #{current_morty[0]} health correct? yes/no"
+	answer = gets.chomp
+	if answer == "no"
+		puts "what would you like to change it to?"
+		hp = gets.chomp
+		current_morty[0] = hp.to_i
+	end
+
+	puts "Is #{current_morty[1]} defense correct? yes/no"
+	answer = gets.chomp
+	if answer == "no"
+		puts "what would you like to change it to?"
+		defense = gets.chomp
+		current_morty[1] = defense.to_i
+	end
+
+	puts "Is #{current_morty[2]} attack correct? yes/no"
+	answer = gets.chomp
+	if answer == "no"
+		puts "what would you like to change it to?"
+		attack = gets.chomp
+		current_morty[2] = attack.to_i
+	end
+	#add each morty to the hold then spit back their stats
+	morty_hold.push("#{current_morty[0]} #{current_morty[1]} #{current_morty[2]}")
+end
+
+p morty_hold
+
+	#BARF IT OUT
+	# morty_hold.each do |x|
+	# 	detail = morty_hold[x].split(' ')
+	# 	puts "Morty values: HP: #{detail[0]} Defense: #{detail[1]} Attack: #{detail[2]}"
+	# end
