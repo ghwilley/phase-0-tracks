@@ -119,10 +119,11 @@ quantity.times do |x|
 	morty_hold.push("#{current_morty[0]} #{current_morty[1]} #{current_morty[2]}")
 end
 
-p morty_hold
 
 	#BARF IT OUT
-	# morty_hold.each do |x|
-	# 	detail = morty_hold[x].split(' ')
-	# 	puts "Morty values: HP: #{detail[0]} Defense: #{detail[1]} Attack: #{detail[2]}"
-	# end
+
+
+	morty_hold.each { |x|
+		detail = x.split(' ')
+		puts "Morty values: HP: #{detail[0]} Defense: #{detail[1]} Attack: #{detail[2]}"
+	}
