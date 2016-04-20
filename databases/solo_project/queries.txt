@@ -1,0 +1,77 @@
+1.
+sqlite> SELECT * FROM beer;
+1|Moon Man|1|5|Pale Ale
+2|Spotted Cow|1|4.8|Cream Ale
+3|Alpha King|2|6.6|India Pale Ale
+4|Sofie|3|6.5|Farmhouse Ale
+5|Darkness|4|9|Russian Imperial Stout
+6|Mamas Little Yella|5|4.5|Pilsner
+
+2.
+sqlite> SELECT * FROM beer WHERE brewery=1;
+1|Moon Man|1|5|Pale Ale
+2|Spotted Cow|1|4.8|Cream Ale
+
+3.
+sqlite> SELECT * FROM beer, breweries WHERE beer.brewery = breweries.id;
+1|Moon Man|1|5|Pale Ale|1|New Glarus
+2|Spotted Cow|1|4.8|Cream Ale|1|New Glarus
+3|Alpha King|2|6.6|India Pale Ale|2|Three Floyds
+4|Sofie|3|6.5|Farmhouse Ale|3|Goose Island
+5|Darkness|4|9|Russian Imperial Stout|4|Surly
+6|Mamas Little Yella|5|4.5|Pilsner|5|Oskar Blues
+
+4.
+sqlite> SELECT beer.beer, breweries.brewery FROM beer JOIN breweries ON beer.bre
+wery = breweries.id;
+Moon Man|New Glarus
+Spotted Cow|New Glarus
+Alpha King|Three Floyds
+Sofie|Goose Island
+Darkness|Surly
+Mamas Little Yella|Oskar Blues
+
+5.
+sqlite> DELETE FROM beer WHERE abv=4.5;
+sqlite> SELECT * FROM beer;
+1|Moon Man|1|5|Pale Ale
+2|Spotted Cow|1|4.8|Cream Ale
+3|Alpha King|2|6.6|India Pale Ale
+4|Sofie|3|6.5|Farmhouse Ale
+5|Darkness|4|9|Russian Imperial Stout
+
+Release 3:
+
+sqlite> SELECT beer, abv FROM beer CROSS JOIN breweries;
+Moon Man|5
+Moon Man|5
+Moon Man|5
+Moon Man|5
+Moon Man|5
+Spotted Cow|4.8
+Spotted Cow|4.8
+Spotted Cow|4.8
+Spotted Cow|4.8
+Spotted Cow|4.8
+Alpha King|6.6
+Alpha King|6.6
+Alpha King|6.6
+Alpha King|6.6
+Alpha King|6.6
+Sofie|6.5
+Sofie|6.5
+Sofie|6.5
+Sofie|6.5
+Sofie|6.5
+Darkness|9
+Darkness|9
+Darkness|9
+Darkness|9
+Darkness|9
+
+sqlite> SELECT beer FROM beer JOIN breweries USING (id);
+Moon Man
+Spotted Cow
+Alpha King
+Sofie
+Darkness
