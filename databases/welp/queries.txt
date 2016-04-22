@@ -1,0 +1,19 @@
+1.
+sqlite> SELECT * FROM businesses, users, reviews WHERE business_id=businesses.id
+;
+1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt|1|5|great food!|1|1
+1|Grundy Hollow Wedding Chapel|2|Mandy|Kaling|1|5|great food!|1|1
+2|Amir's Towing|1|Bradford|Pitt|2|2|bad food!|2|2
+2|Amir's Towing|2|Mandy|Kaling|2|2|bad food!|2|2
+
+2.
+sqlite> SELECT reviews.business_id, reviews.user_id, reviews.stars, reviews.comm
+ent FROM reviews JOIN businesses ON reviews.business_id=businesses.id;
+1|1|5|great food!
+2|2|2|bad food!
+
+3.
+sqlite> SELECT * FROM reviews,businesses,users WHERE reviews.business_id=busines
+ses.id AND businesses.id=1 AND reviews.user_id = users.id;
+1|5|great food!|1|1|1|Grundy Hollow Wedding Chapel|1|Bradford|Pitt
+
