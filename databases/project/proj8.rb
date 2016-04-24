@@ -7,7 +7,55 @@ db = SQLite3::Database.new("barhopping.db")
 # db includes bars, long/lat of bar, beers on tap
 # second table is of beers - name and abv
 
+create_bars_table_cmd = <<-SQL
+  CREATE TABLE IF NOT EXISTS bars_table(
+    bar_id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    lat INT,
+    long INT
+  )
+SQL
 
+create_beers_table_cmd = <<-SQL
+  CREATE TABLE IF NOT EXISTS beers_table(
+    beer_id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    abv INT
+  )
+SQL
+
+#combine these tables
+create_beers_bars_table_cmd = <<-SQL
+	CREATE TABLE IF NOT EXISTS bars_beers_table(
+	id INTEGER PRIMARY KEY,
+	bar_id INT,
+	beer_id INT,
+	FOREIGN KEY(bar_id) REFERENCES bars_table(bar_id),
+	FOREIGN KEY(beer_id) REFERENCES beers_table(beer_id)
+	)
+SQL
+
+db.execute(create_bars_table_cmd)
+db.execute(create_beers_table_cmd)
+db.execute(create_beers_bars_table_cmd)
+
+
+
+
+
+#ADD SOME BEERS
+def add_beer(db, name, abv)
+  db.execute("INSERT INTO beers_table (name, abv) VALUES (?, ?)", [name, abv])
+end
+
+30.times do
+	add_beer(db, Faker::Beer.name, Faker::Beer.alcohol)
+end
+
+#ADD SOME BARS
+def bar(db, name, lat, long)
+  db.execute("INSERT INTO beers_table (name, lat, long) VALUES (?, ?, ?)", [name, lat, long])
+end
 
 # going between bars
 # starting bar
