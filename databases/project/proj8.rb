@@ -111,7 +111,7 @@ current_taps = tap_list(db, current_bar_id +1)
 current_bar = bars[current_bar_id][1]
 bac = 0.0
 abv = 1.0
-choice = ''
+choice = 'none'
 
 def drink_beer(bac, abv)
 	grams = 12 * abv.to_f * 0.789
@@ -125,68 +125,50 @@ end
 #DRIVER CODE --------------------------------------------------------
 # we're giving a set time of 1 hour per drink, male and you weigh 160lbs. deal with it.
 
-
-
-
-while (choice != 'none') && (bac < 0.5)
-	if bac == 0
-		puts "You're currently at #{current_bar}. Your BAC is at #{bac.round(2)}. They have:"
-		x = 0
-		while x < current_taps.length 
-			puts "#{x}. #{current_taps[x][0]} #{current_taps[x][1]}"
-			x +=1
-		end
-		bac += 0.0001
-	else
-			puts "Choose a beer by # from the list, otherwise type \'none\' to go somewhere else."
-			choice = gets.chomp
-			abv = current_taps[choice.to_i][1]
-			abv = abv.chomp('%')
-			bac += drink_beer(bac, abv).round(2)
-
-		if choice != 'none'
-			puts "You drank #{current_taps[choice.to_i][0]}, your BAC is up to #{bac.round(2)}"
-		end
-	end
-end
-
-
-#add chill out method to reduce bac?
 if bac >= 0.5
 	puts "You wake up in a strange place where movement and light evoke unbearable pain."
 else
 	while current_bar_id != 'home'
+	# while current_bar_id != 'home'
+	#display bars to go to
 		puts "Where would you like to go? Type \'home\' if you forgot you need to be at DBC in the morning."
 			x = 0
 			while x < bars.length
 				puts "#{x}. #{bars[x][1]}"
 				x+=1
-			end
+			end	
+		taps_display = 0
+		
+		choice = ''
+
 		current_bar_id = gets.chomp
+		current_bar = bars[current_bar_id.to_i][1]
+		if current_bar_id != 'home'
+				while (choice != 'none') && (bac < 0.5)
+					if taps_display != 1
+						puts "You're currently at #{current_bar}. Your BAC is at #{bac.round(2)}. They have:"
+						x = 0
+						while x < current_taps.length 
+							puts "#{x}. #{current_taps[x][0]} #{current_taps[x][1]}"
+							x +=1
+						end
+						taps_display = 1
+					else
+							puts "Choose a beer by # from the list, otherwise type \'none\' to go somewhere else."
+							choice = gets.chomp
+							abv = current_taps[choice.to_i][1]
+							abv = abv.chomp('%')
+							bac += drink_beer(bac, abv).round(2)
+						if choice != 'none'
+							puts "You drank #{current_taps[choice.to_i][0]}, your BAC is up to #{bac.round(2)}"
+						end
+					end
+				end
+		else
+			puts "get home safe."
+
+		end
 	end
+		
 end
 
-# going between bars
-# starting bar
-	# show beers on tap
-	# choose whatever one you drink
-		# repeat until done
-	# choose next bar
-	# show distance in km
-	# choose walk or cab
-	# tell how long it took to get there
-	# display beer on tap..
-
-
-
-
-	#TODO
-	# TRAVEL TO OTHER BARS
-	# COMPARE DISTANCE
-	# REDUCE BAC BASED ON MOT
-
-
-
-
-
-# puts distance [Faker::Address.latitude.to_f, Faker::Address.longitude.to_f],[Faker::Address.latitude.to_f, Faker::Address.longitude.to_f]
