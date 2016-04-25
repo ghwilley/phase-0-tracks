@@ -2,6 +2,7 @@
 require 'sqlite3'
 require 'faker'
 
+
 # create sqlite3 database
 db = SQLite3::Database.new("barhopping.db")
 # db includes bars, long/lat of bar, beers on tap
@@ -78,6 +79,7 @@ def tap_list(db, bar_name)
 end
 
 
+
 #Determines distance. Uses Haversine formula!
 def distance loc1, loc2
   rad_per_deg = Math::PI/180  # PI / 180
@@ -104,10 +106,43 @@ end
 bars = db.execute("SELECT * FROM bars")
 beers = db.execute("SELECT * FROM beers")
 
+current_bar_id = 0
+current_taps = tap_list(db, current_bar_id +1)
+current_bar = bars[current_bar_id][1]
+bac = 0.0
+abv = 1.0
 
-current_bar = bars[0][1]
+def drink_beer(bac, abv)
+	grams = 12 * abv.to_f * 0.789
+	weight = 72000 * 0.68
+	bac = grams / weight
+	bac = bac * 100
+	# bac += abv.to_f / 0.15
+end
+
+
 #DRIVER CODE --------------------------------------------------------
-puts "Hello. You're currently at #{current_bar}."
+# we're giving a set time of 1 hour per drink, male and you weigh 160lbs. deal with it.
+puts "Hello. You're currently at #{current_bar}. Your BAC is at #{bac}. They have:"
+
+p current_taps.length
+x = 0
+while x < current_taps.length 
+	puts "#{x}. #{current_taps[x][0]} #{current_taps[x][1]}"
+	x +=1
+end
+
+puts "Choose a beer by # from the list, otherwise type \'none\' to go somewhere else."
+choice = gets.chomp
+	abv = current_taps[choice.to_i][1]
+	abv = abv.chomp('%')
+	bac = drink_beer(bac, abv).round(2)
+
+puts "You drank #{current_taps[choice.to_i][0]}, your BAC is up to #{bac}"
+
+
+
+
 # going between bars
 # starting bar
 	# show beers on tap
