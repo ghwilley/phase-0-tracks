@@ -125,16 +125,19 @@ end
 #DRIVER CODE --------------------------------------------------------
 # we're giving a set time of 1 hour per drink, male and you weigh 160lbs. deal with it.
 
-puts "Hello. You're currently at #{current_bar}. Your BAC is at #{bac}. They have:"
 
-x = 0
-while x < current_taps.length 
-	puts "#{x}. #{current_taps[x][0]} #{current_taps[x][1]}"
-	x +=1
-end
 
 
 while (choice != 'none') && (bac < 0.5)
+	if bac == 0
+		puts "You're currently at #{current_bar}. Your BAC is at #{bac.round(2)}. They have:"
+		x = 0
+		while x < current_taps.length 
+			puts "#{x}. #{current_taps[x][0]} #{current_taps[x][1]}"
+			x +=1
+		end
+		bac += 0.0001
+	else
 			puts "Choose a beer by # from the list, otherwise type \'none\' to go somewhere else."
 			choice = gets.chomp
 			abv = current_taps[choice.to_i][1]
@@ -142,14 +145,25 @@ while (choice != 'none') && (bac < 0.5)
 			bac += drink_beer(bac, abv).round(2)
 
 		if choice != 'none'
-			puts "You drank #{current_taps[choice.to_i][0]}, your BAC is up to #{bac}"
+			puts "You drank #{current_taps[choice.to_i][0]}, your BAC is up to #{bac.round(2)}"
 		end
+	end
 end
+
+
 #add chill out method to reduce bac?
 if bac >= 0.5
 	puts "You wake up in a strange place where movement and light evoke unbearable pain."
 else
-	puts "Where would you like to go? Type \'home\' if you forgot you need to be at DBC in the morning."
+	while current_bar_id != 'home'
+		puts "Where would you like to go? Type \'home\' if you forgot you need to be at DBC in the morning."
+			x = 0
+			while x < bars.length
+				puts "#{x}. #{bars[x][1]}"
+				x+=1
+			end
+		current_bar_id = gets.chomp
+	end
 end
 
 # going between bars
@@ -162,6 +176,15 @@ end
 	# choose walk or cab
 	# tell how long it took to get there
 	# display beer on tap..
+
+
+
+
+	#TODO
+	# TRAVEL TO OTHER BARS
+	# COMPARE DISTANCE
+	# REDUCE BAC BASED ON MOT
+
 
 
 
