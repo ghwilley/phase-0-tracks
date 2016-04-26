@@ -12,3 +12,11 @@ it could be the way to go, or if you need a temporary place for your site to liv
 I would guess that leaving root opens up for brute force attacks and the like. 
 Then they could change your site from being a place to buy used tennis rackets to
 a site about why used tennis rackets are a waste of money. Not cool.
+
+
+# Find the thing.
+cursor
+fontWeight
+opacity
+minHeight
+motion
